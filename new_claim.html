@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Claim</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/new_claim.css') }}">
+</head>
+<body>
+    <h1>Create New Claims for "{{topic['topicName'] }}"</h1>
+    <main>
+        <form method="POST" action="{{ url_for('new_claim', topic_id=topic_id) }}">
+            <label for="title">Claim Title:</label><br>
+            <input type="text" name="title"  id ="title" placeholder="Enter the claim title" required><br><br>
+
+
+            <label for="description">Claim Description:</label>
+            <textarea id="description" name="description" placeholder="Write claim Info" required></textarea>
+            
+            <button type="submit">Post Claim</button>
+        </form>
+    </main>
+
+    <nav><a href="{{ url_for('view_topics') }}">Back To Topics</a></nav>
+    
+</body>
+</html>

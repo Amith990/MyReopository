@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ topic['title'] }}</title>
+
+</head>
+<body>
+    <header>
+    <h1>{{ topic['title'] }}</h1>
+    <p>{{ topic['description'] }}</p>
+    </header>
+    <main>
+        <h2>Claims:</h2>
+        {% if topic.claims %}
+            <ul>
+                {% for claim in topic.claims %}
+                    <li>
+                        <h3>{{ claim['text'] }}</h3>
+                        <a href="{{ url_for('claim', claim_id=claim['claimID']) }}">View Claim</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No claims yet for this topic!</p>
+        {% endif %}
+        
+        <a href="{{ url_for('new_claim', topic_id=topic['topic_id']) }}">Create New Claim</a><br>
+
+        <a href="{{ url_for('view_topics') }}"> Back to Topics</a>
+        
+    </main>
+    
+</body>
+</html>

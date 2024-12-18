@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create New Reply</title>
+    <link rel= "stylesheet" href="{{ url_for('static', filename='css/new_reply.css') }}">
+
+</head>
+<body>
+    <h1>Reply: {{claim.title }}</h1>
+    <main>
+        <form action="{{ url_for('new_reply', claim_id=claim.id) }}" method="POST">
+            <label for="content">Reply</label>
+            <textarea name="content" placeholder="Write the Reply" required></textarea><br>
+    
+            <label for="relation_type">Support/Oppose:</label>
+            <select name="relation_type" required>
+                <option value="support">Support</option>
+                <option value="oppose">Oppose</option>
+            </select><br>
+    
+            <button type="submit">Post Reply</button>
+        </form>
+    </main>
+    
+    <nav>
+        <a href="{{ url_for('claim', claim_id=claim.id) }}">Back to Claim</a>
+    </nav>
+   
+</body>
+</html>

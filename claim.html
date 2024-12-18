@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Claim</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/claim.css') }}">
+</head>
+<body>
+    <header>
+        <h1>{{claim['text'] }}</h1>
+    </header>
+    <main>
+        <p>{{ claim.description }}</p>
+
+        <h2>Replies:</h2>
+        <ul>
+            {% for reply in replies %}
+                <li>{{ reply['text'] }} - {{ reply['postingUser'] }}</li>
+            {% else %}
+                <li>No replies</li>
+            {% end for %}
+        </ul>
+        
+        <div class="form-container">
+            <h3>Post Reply</h3>
+            <form method="POST" action="{{ url_for('new_reply', claim_id=claim_id) }}">
+                <label for="content">Reply Content:</label>
+                <textarea name="content" id="content" placeholder="Write your reply here:" required></textarea><br>
+
+                <label for="relation_type">Relation Type:</label>
+                <input type="text" name="relation_type" placeholder="Relation to the claim" required><br>
+                
+                <button type="submit">Submit Reply</button>
+            </form>
+        </div>
+        <a href="{{ url_for('view_topics') }}">Back to Topics</a>
+    </main>
+   
+</body>
+</html>

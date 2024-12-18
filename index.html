@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Debate Forum</title>
+    <link rel="stylesheet" href= "{{ url_for('static', filename='css/index.css') }}">
+</head>
+<body>
+    <header>  
+        <h1><b>Welcome To The Debate Platform</b></h1>
+    </header>
+    <main>
+        <p>Let's Start Exploring</p>
+    </main>
+    <nav>
+        <ul>
+            <li><p>New Users Click The Register <a href="{{url_for('register') }}">Register</a></p></li>
+            <li><p>Existing Users press Login <a href="{{url_for('login') }}">Login</a></p></li>
+            <li><p>To Add New Topic Click New Topic<a href="{{url_for('new_topic') }}">New Topic</a></p></li>
+        </ul>
+       
+    </nav>
+    
+    <div class="container">
+        <h2>Available Topics</h2>
+        {% for topic in topics %}
+            <div class="card">
+                <h3>{{ topic['topicName'] }}</h3>
+                <p>{{ topic['description'] }}</p>
+                <a href="{{url_for('new_claim', topic_id=topic['topic_id']) }}">
+                    <button>View Topic</button>
+                </a> 
+            </div>   
+        {% else %}
+            <p>No Topics Available</p>
+        {% endfor %} 
+    </div> 
+</body>
+</html>

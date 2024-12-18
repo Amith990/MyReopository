@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create New Topic</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/new_topic.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Create a New Topic</h1>
+        <form method="POST" action="{{ url_for('new_topic') }}">
+    
+            <label for="title">Title:</label><br>
+            <input type="text" name="title" placeholder="Enter the topic title" required><br><br>
+                
+            <label for="description">Description:</label><br>
+            <textarea name="description" placeholder="Describe the topic" required></textarea><br>
+            <button type="submit">Create Topic</button><br><br>
+                
+            <a href="{{ url_for('index') }}" class="back-to-home">Back to Home</a>
+        </form>
+    </div>
+    
+</body>
+</html>
